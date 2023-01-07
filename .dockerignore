@@ -1,0 +1,6 @@
+# .dockerignore
+
+data/
+wordpress/
+
+# Other files and folder
