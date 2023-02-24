@@ -11,3 +11,4 @@ services:
      restart: "no"
      volumes:
       - ./typecho:/var/www/html
+      - ./uploads:/usr/uploads
