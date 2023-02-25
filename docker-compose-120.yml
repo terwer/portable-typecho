@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+   db:
+     image: mysql:5.7.38
+     volumes:
+      - ./data120:/var/lib/mysql
+     ports:
+      - "3306:3306"
+     restart: "no"
+     environment:
+       MYSQL_ROOT_PASSWORD: typecho120
+       MYSQL_DATABASE: typecho120
+       MYSQL_USER: typecho120
+       MYSQL_PASSWORD: typecho120
+
+   typecho:
+     depends_on:
+       - db
+     image: terwer/typecho120-php:7.4.33-apache
+     container_name: typecho120
+     build:
+       context: .
+       dockerfile: Dockerfile-php7
+     ports:
+       - "8080:80"
+     restart: "no"
+     volumes:
+       - ./typecho120:/var/www/html
